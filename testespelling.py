@@ -98,17 +98,13 @@ def jogo():
     imprimir_final_tentativa()
 
 def imprimir_final_tentativa():
-    print()
-    escolha_continuar = input('''
+    print('''
 -------------------------------------------
 Deseja tentar outra palavra?
     "Enter" para SIM / "N" para voltar ao menu do jogo
           ''')
-    match escolha_continuar:
-        case 1:
-            jogo()
-        case 2:
-            menu_jogo()
+    input()
+    menu_jogo()
 
 
 
@@ -245,5 +241,3 @@ def encerrar_programa():
 inicio_do_programa()
 
 menu_inicial()
-
-
