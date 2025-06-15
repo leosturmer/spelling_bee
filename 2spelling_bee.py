@@ -1,10 +1,35 @@
+##### O QUE FAZER:
+## - jogo randomico: diz a quantidade de letras e tenta adivinhar a palavra. tipo jogo da forca
+## - continuar jogo de colocar palavra pra adivinhar
+## - colocar try except
+
+import random
+
 lista_de_palavras = ['Abhorrent', 'Absence', 'Absorption', 'Accommodating', 'Accomplice', 'Acreage', 'Acrimonious', 'Actuarial', 'Adjournment', 'Adjudicate', 'Adjustment', 'Affiliation', 'Agastache', 'Aggregate', 'Alacrity', 'Algerian', 'Algorithm', 'Allergen', 'Alleviate', 'Allure', 'Altruistic', 'Amnesty', 'Anachronism', 'Anchoring', 'Anglers', 'Anodyne', 'Apartheid', 'Apocalyptic', 'Apprehend', 'Armageddon', 'Arthritis', 'Assumption', 'Asthma', 'Aversion', 'Avoidance', 'Azalea', 'Baccalaureate', 'Backgammon', 'Backstabbing', 'Balderdash', 'Balustrade', 'Banishment', 'Bequeath', 'Berated', 'Bereavement', 'Bewilderment', 'Bingeing', 'Blasphemous', 'Boisterous', 'Bondholder', 'Braggart', 'Breadth', 'Brinkmanship', 'Buddhist', 'Bureaucracy', 'Burglarize', 'Bustling', 'Camaraderie', 'Camouflage', 'Campaign', 'Capacious', 'Capricious', 'Cataclysm', 'Catastrophic', 'Cautioned', 'Chameleon', 'Chastisement', 'Chauvinism', 'Chicory', 'Circuitous', 'Circumstantial', 'Circumvent', 'Clairvoyant', 'Clumsy', 'Collard', 'Committee', 'Compassionate', 'Conceivably', 'Concise', 'Consciousness', 'Consumption', 'Contempt', 'Conversely', 'Corroborate', 'Craveable', 'Daffodil', 'Dalliance', 'Dalmatian', 'Dampened', 'Dastardly', 'Daunting', 'Deadlock', 'Decadence', 'Deceased', 'Decipher', 'Decluttering', 'Deflationary', 'Delphinium', 'Demographic', 'Demoralize', 'Dereliction', 'Desalination', 'Desensitize', 'Deterrence', 'Dichotomy', 'Diligently', 'Diminished', 'Disproportionate', 'Distillation', 'Downstream', 'Eloquently', 'Embodied', 'Emboldened', 'Enrollment', 'Entrepreneur', 'Equitable', 'Ethereal', 'Ethnography', 'Eucalyptus', 'Evacuee', 'Excerpt', 'Exoskeleton', 'Fallacy', 'Fatigued', 'Fattening', 'Fieldwork', 'Fluctuation', 'Forfeiting', 'Fragile', 'Frittered', 'Ghostly', 'Gingivitis', 'Gooseberry', 'Gratitude', 'Guaranteed', 'Hazelnut', 'Heartwarming', 'Heckled', 'Hideous', 'Hindered', 'Hodgepodge', 'Homeowner', 'Hostile', 'Hyacinth', 'Idiosyncrasy', 'Immobilize', 'Inaugural', 'Inducement', 'Inning', 'Inquiry', 'Interviewee', 'Invariably', 'Ironclad', 'Jaundice', 'Kohlrabi', 'Laceration', 'Lawsuit', 'Leisurely', 'Liability', 'Licensing', 'Looting', 'Luminous', 'Malignancy', 'Mammoth', 'Mangosteen', 'Matriarchal', 'Meerkat', 'Meteorologist', 'Moneyed', 'Mulling', 'Newsworthy', 'Niftiest', 'Nightingale', 'Nimble', 'Nonaccrual', 'Nonexistent', 'Oblivious', 'Oddity', 'Osteoporosis', 'Outlining', 'Overarching', 'Passivizing', 'Pathetically', 'Patroller', 'Patronizing', 'Peaceable', 'Peculiar', 'Perception', 'Periphery', 'Perpetrator', 'Philodendron', 'Phylum', 'Pomegranate', 'Posthumous', 'Procedural', 'Readership', 'Reassurance', 'Reinvigorate', 'Reprieve', 'Rescinded', 'Resourcefulness', 'Restitution', 'Rhetorical', 'Rhinoceros', 'Rookie', 'Roulette', 'Rustling', 'Scorching', 'Seasoned', 'Shallots', 'Shepherd', 'Sightings', 'Skepticism', 'Slaughterhouse', 'Sleuthing', 'Solely', 'Soothing', 'Southeast', 'Stalemate', 'Stampede', 'Subsiding', 'Succeeded', 'Successor', 'Succumb', 'Suppress', 'Synthesize', 'Systematicity', 'Tennessee', 'Thoroughness', 'Thriving', 'Toppled', 'Tournament', 'Transcend', 'Transdisciplinary', 'Trespass', 'Unacceptable', 'Unbiased', 'Unbowed', 'Undergraduate', 'Unforeseen', 'Unobtrusive', 'Unprecedented', 'Unpredictable', 'Unsettle', 'Viewership', 'Voracious', 'Weakened', 'Whether', 'Whirring', 'Whisperer']
 
 palavras_acertadas = []
 palavras_erradas = []
 
-quantidade_acertada = 0
-quantidade_erradas = 0
+def sortear_palavra():
+    palavra_sorteada = random.choice(lista_de_palavras)
+
+    print(f'A palavra sorteada tem {len(palavra_sorteada)} letras.')
+
+    tentativa_palavra_sorteada = input('Qual palavra você acha que é? ').capitalize()
+
+    if tentativa_palavra_sorteada in palavra_sorteada:
+        print('Parabéns! Você acertou!')
+    else:
+        print(f'Poxa! A palavra correta era {palavra_sorteada}')
+
+
+
+
+
+
+
+
+
 
 def menu_inicial():
     imprimir_menu_inicial()
@@ -17,7 +42,12 @@ def menu_inicial():
         '3' : encerrar_programa
     }
 
-    consultar[opcao_menu_inicial]()
+    try:
+        consultar[opcao_menu_inicial]()
+    except KeyError:
+        print('Opção inválida! Digite uma opção válida!')
+
+        menu_inicial()
 
 def menu_jogo():
     print('''
@@ -36,35 +66,61 @@ Como funciona:
 
 
 def jogo():
-    palavra_digitada = input('Qual palavra deseja adivinhar? ')
+    
+    palavra_digitada = input('Qual palavra deseja adivinhar? ').capitalize()
 
     if palavra_digitada in lista_de_palavras:
-        print(f'Parabéns! {palavra_digitada} está correto! :)')
+        print(f'''
+        
+        Parabéns! {palavra_digitada} está correto! :)
+        
+        ''')
         palavras_acertadas.append(palavra_digitada)
-        quantidade_acertada +=1
-    else: 
-        print(f'Poxa vida! {palavra_digitada} não está correta :(')
+        desempenho_jogo()
+
+     ####   jogo()
+
+    else:
+        print(f'''
+        
+        Poxa vida! {palavra_digitada} não está correta :(
+        
+        ''') 
+
         palavras_erradas.append(palavra_digitada)
-        quantidade_erradas += 1
+
+
+def desempenho_jogo():
+    print(f''' Você acertou {len(palavras_acertadas)} palavras! ''')
+
 
 
 # Controller
 
 def menu():
     imprimir_menu()    
-    item_menu = int(input("Digite a opção escolhida: "))
+    item_menu = input("Digite a opção escolhida: ")
 
-    while item_menu != 5:
-        match item_menu:
-            case 1:
-                filtro_quant_letras()
-            case 2:
-                filtro_min_letras()
-            case 3:
-                filtro_letra()
-            case 4:
-                menu_inicial()
-        break
+    consultar = {
+        '1' : filtro_quant_letras,
+        '2' : filtro_min_letras,
+        '3' : filtro_letra,
+        '4' : menu_inicial
+    }
+
+    try:
+        consultar[item_menu]()
+
+    except KeyError:
+        print('Opção inválida! Digite uma opção válida!')
+        menu()
+
+    
+
+###           while item_menu != 5:
+###         break
+
+
 
 ## Filtros 
 
@@ -174,7 +230,7 @@ def encerrar_programa():
 
 
 
-####################### INICIANDO O PROGRAMA
+####################### INICIANDO O PROGRAMA ##########################
 
 inicio_do_programa()
 
